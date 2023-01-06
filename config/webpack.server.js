@@ -9,5 +9,14 @@ module.exports = {
         filename: 'bundle_server.js',
         path: path.resolve(__dirname, '../dist')
     },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: '/node_modules/'
+            }
+        ]
+    },
     externals: [webpackExterrnals()]
 }
