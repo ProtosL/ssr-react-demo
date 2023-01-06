@@ -7,6 +7,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// 静态目录代理
+app.use(express.static('dist/public'));
+
 app.get('*', (req, res) => {
     const content = ReactDOMServer.renderToString(
         <StaticRouter location={req.url}>
@@ -19,6 +22,7 @@ app.get('*', (req, res) => {
             <head></head>
             <body>
                 <div id="root">${content}</div>
+                <script src="/bundle_client.js"></script>
             </body>
         </html>
     `
