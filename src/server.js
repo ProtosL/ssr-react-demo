@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
             </body>
         </html>
     `
-    
+
     res.writeHead(200, {
         'content-type': 'text/html;charset=utf8'
     })
