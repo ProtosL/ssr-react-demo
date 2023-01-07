@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
+import { Provider } from 'react-redux';
 import Routes from './routes';
+import store from './store';
 
 const express = require('express');
 const app = express();
@@ -12,9 +14,11 @@ app.use(express.static('dist/public'));
 
 app.get('*', (req, res) => {
     const content = ReactDOMServer.renderToString(
-        <StaticRouter location={req.url}>
-            <Routes />
-        </StaticRouter>
+        <Provider store={store}>
+            <StaticRouter location={req.url}>
+                <Routes />
+            </StaticRouter>
+        </Provider>
     );
 
     const html = `
