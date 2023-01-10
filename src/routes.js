@@ -11,11 +11,22 @@ const RouteList = () => {
                 <li><Link to="/personal">个人中心页</Link></li>
             </ul>
             <Routes>
-                <Route exact path="/" element={<Home/> } />
-                <Route path="/personal" element={<Personal/> } />
+                <Route exact path="/" element={<Home />} />
+                <Route path="/personal" element={<Personal />} />
             </Routes>
         </div>
     )
 }
+
+export const routesConfig = [
+    {
+        path: '/',
+        component: Home
+    },
+    {
+        path: '/presonal',
+        component: Personal
+    }
+]
 
 export default RouteList;

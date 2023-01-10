@@ -6,6 +6,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const homeData = useSelector((state) => state.home);
 
+    // CSR 获取数据
     useEffect(() => {
         dispatch(fetchHomeData)
     }, [])
@@ -31,5 +32,10 @@ const Home = () => {
         </div>
     )
 };
+
+// SSR 数据获取
+Home.getInitialData = async (store) => {
+    return store.dispatch(fetchHomeData)
+}
 
 export default Home;
