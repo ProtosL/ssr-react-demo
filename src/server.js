@@ -4,6 +4,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from 'react-redux';
 import Routes, { routesConfig } from './routes';
 import createStoreInstance from './store';
+import { Helmet } from 'react-helmet';
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -32,9 +33,13 @@ app.get('*', (req, res) => {
             </Provider>
         );
 
+        const helmet = Helmet.renderStatic();
+
         const html = `
             <html>
-                <head></head>
+                <head>
+                    ${helmet?.title?.toString()}
+                </head>
                 <body>
                     <div id="root">${content}</div>
                     <script>

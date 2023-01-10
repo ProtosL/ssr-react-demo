@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchHomeData } from '../store/actions/home';
 
@@ -15,9 +16,18 @@ const Home = () => {
         console.log('click');
     }
 
+    const renderHeader = () => {
+        return (
+            <Helmet>
+                <title>主页</title>
+            </Helmet>
+        )
+    }
+
     return (
         <div>
-            <h1>home</h1>
+            {renderHeader()}
+            <h1>主页</h1>
             <ul>
                 {
                     homeData?.articles?.map(article => (
