@@ -24,7 +24,7 @@ export const routesConfig = [
         component: Home
     },
     {
-        path: '/presonal',
+        path: '/personal',
         component: Personal
     }
 ]
